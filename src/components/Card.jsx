@@ -26,6 +26,7 @@ function Card() {
       <p className="tracking-widest mb-16M text-grayish-blue font-bold">{currentPlan.views} Pageviews</p>
       
       <input 
+        aria-label='how much to spend for value'
         type="range" 
         min="1" 
         max="3" 
@@ -43,6 +44,7 @@ function Card() {
       <div className="flex lg:justify-end gap-4 text-sm font-semibold">
         <p>Monthly Billing</p>
         <input
+            aria-label='monthly or yearly'
             type="checkbox"
             className="toggle toggle-primary hover:opacity-30"
             checked={isYearly}

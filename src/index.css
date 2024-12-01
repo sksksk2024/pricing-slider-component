@@ -1,13 +1,136 @@
-body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Default */
+
+*,
+*::before,
+*::after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+img {
+  max-width: 100%;
+  user-select: none;
+}
+
+/* Variables */
+
+:root {
+  /* Font Size */
+  --font-size-2xs: 0.5rem;
+  --font-size-xs: 0.75rem;   /* Tailwind default */
+  --font-size-sm: 0.875rem;  /* Tailwind default */
+  --font-size-md: 1rem;
+  --font-size-md-1: 1.1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-2-2xl: 2.2rem;
+  --font-size-2-4xl: 2.4rem;
+  --font-size-3xl: 3rem;
+  --font-size-4xl: 4rem;
+
+  /* Colors */
+  --soft-cyan: hsl(174, 77%, 80%);
+  --strong-cyan: hsl(174, 86%, 45%);
+  --light-grayish-red: hsl(14, 92%, 95%);
+  --light-red: hsl(15, 100%, 70%);
+  --pale-blue: hsl(226, 100%, 87%);
+  --very-pale-blue: hsl(230, 100%, 99%);
+  --light-grayish-blue1:: hsl(224, 65%, 95%);
+  --light-grayish-blue2: hsl(223, 50%, 87%);
+  --grayish-blue: hsl(225, 20%, 60%);
+  --dark-desaturated-blue: hsl(227, 35%, 25%);
+}
+
+/* Styles */
+/* body {
+
+} */
+
+.container {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  animation: spin 2s linear infinite;
+}
+
+.loader::before,
+.loader::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 35px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #3498db;
+  animation: bounce 2s infinite ease-in-out;
+}
+
+.loader::after {
+  left: -35px;
+  background: #e74c3c;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+/* Slider */
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: inherit;
+  height: 20px; /* Increased size to fit the arrows better */
+  width: 20px; /* Increased size */
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--soft-cyan), var(--strong-cyan));
+  cursor: pointer;
+  background-image: url('./images/icon-slider.svg');
+  background-size: 100% 100%; /* Ensure the whole SVG fits and scales correctly */
+  background-position: center; /* Center the image inside the thumb */
+  background-repeat: no-repeat; /* Prevent tiling */
+  border: 3px solid var(--strong-cyan);
+  box-shadow: 0 3px 1px rgba(0, 100, 0, 0.9), 0 4px 6px rgba(38, 186, 164, 0.9);
+}
+
+input[type="range"]::-moz-range-thumb {
+  /* Firefox support */
+  height: 25px; /* Increased size */
+  width: 25px; /* Increased size */
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--soft-cyan), var(--strong-cyan));
+  background-color: var(--strong-cyan);
+  cursor: pointer;
+  background-image: url('./images/icon-slider.svg');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 3px solid var(--strong-cyan);
+  box-shadow: 0 3px 10px var(--soft-cyan), 0 4px 60px var(--soft-cyan);
 }
